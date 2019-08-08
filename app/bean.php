@@ -58,9 +58,9 @@ return [
     ],
     'db'                => [
         'class'    => Database::class,
-        'dsn'      => 'mysql:dbname=test;host=127.0.0.1',
+        'dsn'      => 'mysql:dbname=tuniu;host=127.0.0.1',
         'username' => 'root',
-        'password' => 'swoft123456',
+        'password' => 'GWx=qe-5*(2S',
     ],
     'db2'               => [
         'class'      => Database::class,
@@ -140,5 +140,9 @@ return [
     ],
     'cliRouter'         => [
         // 'disabledGroups' => ['demo', 'test'],
-    ]
+    ],
+    'processPool' => [
+        'class' => \Swoft\Process\ProcessPool::class,
+        'workerNum' => 3
+    ],
 ];
