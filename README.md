@@ -1,102 +1,215 @@
 <p align="center">
-    <a href="https://github.com/swoft-cloud/swoft" target="_blank">
-        <img src="http://qiniu.daydaygo.top/swoft-logo.png?imageView2/2/w/300" alt="swoft"/>
+    <a href="https://github.com/swoft-cloud/swoft" target="_blank">
+        <img src="http://qiniu.daydaygo.top/swoft-logo.png?imageView2/2/w/300" alt="swoft" />
     </a>
 </p>
 
-[![Latest Stable Version](http://img.shields.io/packagist/v/swoft/swoft.svg)](https://packagist.org/packages/swoft/swoft)
+[![Latest Version](https://img.shields.io/badge/beta-v1.0.0-green.svg?maxAge=2592000)](https://github.com/swoft-cloud/swoft/releases)
 [![Build Status](https://travis-ci.org/swoft-cloud/swoft.svg?branch=master)](https://travis-ci.org/swoft-cloud/swoft)
-[![Docker Build Status](https://img.shields.io/docker/build/swoft/swoft.svg)](https://hub.docker.com/r/swoft/swoft/)
-[![Php Version](https://img.shields.io/badge/php-%3E=7.1-brightgreen.svg?maxAge=2592000)](https://secure.php.net/)
-[![Swoole Version](https://img.shields.io/badge/swoole-%3E=4.4.1-brightgreen.svg?maxAge=2592000)](https://github.com/swoole/swoole-src)
-[![Swoft Doc](https://img.shields.io/badge/docs-passing-green.svg?maxAge=2592000)](https://www.swoft.org/docs)
+[![Php Version](https://img.shields.io/badge/php-%3E=7.0-brightgreen.svg?maxAge=2592000)](https://secure.php.net/)
+[![Swoole Version](https://img.shields.io/badge/swoole-%3E=2.1.3-brightgreen.svg?maxAge=2592000)](https://github.com/swoole/swoole-src)
+[![Hiredis Version](https://img.shields.io/badge/hiredis-%3E=0.1-brightgreen.svg?maxAge=2592000)](https://github.com/redis/hiredis)
+[![Swoft Doc](https://img.shields.io/badge/docs-passing-green.svg?maxAge=2592000)](https://doc.swoft.org)
 [![Swoft License](https://img.shields.io/hexpm/l/plug.svg?maxAge=2592000)](https://github.com/swoft-cloud/swoft/blob/master/LICENSE)
-[![Gitter](https://img.shields.io/gitter/room/swoft-cloud/swoft.svg)](https://gitter.im/swoft-cloud/community)
 
-![start-http-server](https://raw.githubusercontent.com/swoft-cloud/swoft/master/public/image/start-http-server.jpg)
+**[中文说明](README_CN.md)**
 
-PHP microservices coroutine framework
-
-> **[中文说明](README.zh-CN.md)**
+> **NOTICE**: 1.x is no longer maintained, please use a more stable 2.0
 
 ## Introduction
 
-Swoft is a PHP microservices coroutine framework based on the Swoole extension. Like Go, Swoft has a built-in coroutine web server and a common coroutine client and is resident in memory, independent of traditional PHP-FPM. There are similar Go language operations, similar to the Spring Cloud framework flexible annotations, powerful global dependency injection container, comprehensive service governance, flexible and powerful AOP, standard PSR specification implementation and so on.
+The first high-performance PHP coroutine full-stack componentization framework based on Swoole native coroutine, built-in coroutine web server and commonly-used coroutine client, resident memory, which has no dependency on PHP-FPM, asynchronous non-blocking IO implementation, similar to synchronous client style of writing to achieve the use of asynchronous clients, without complex asynchronous callback, no tedious yield, similar  Go language coroutines, flexible annotations framework, a powerful global dependency injection container base on annotations, and great service governance , flexible and powerful AOP, PSR specification implementation, etc., could be used to build high-performance Web systems, APIs, middleware, basic services, microservice and so on.
 
-Through three years of accumulation and direction exploration, Swoft has made Swoft the Spring Cloud in the PHP world, which is the best choice for PHP's high-performance framework and microservices management.
+- Base on Swoole extension
+- Built-in HTTP, TCP, WebSocket Coroutine Server
+- Powerful AOP (Aspect Oriented Programming)
+- Flexible and comprehensive annotations framework
+- Global dependency injection container
+- PSR-7 based HTTP message implementation
+- PSR-14 based event manager
+- PSR-15 based middleware
+- PSR-16 based cache design
+- Scalable high performance RPC
+- Holistic service governance, fallback, load balance, service registration and discovery
+- Database ORM
+- Universal connection pools
+- Mysql, Redis, RPC, HTTP Coroutine Clients
+- Coroutine driver client and blocking driver client seamlessly switch automatically
+- Coroutine and asynchronous task delivery
+- Custom user processes
+- RESTful supported
+- Internationalization (i18n) supported
+- High performance router
+- Fast and flexible parameter validator
+- Alias mechanism
+- Powerful log component
+- Cross-platform application auto-reload mechanism
 
-## Feature
-
-- Built-in high performance network server(Http/Websocket/RPC)
-- Flexible componentization
-- Flexible annotation function
-- Diversified command terminal(Console)
-- Powerful Aspect Oriented Programming（AOP）
-- Perfect Container management、Dependency Injection (DI)
-- Flexible event mechanism
-- Implementation of HTTP message based on PSR-7
-- Event Manager Based on PSR-14
-- Middleware based on PSR-15
-- Internationalization(i18n) support
-- Simple and efficient parameter validator
-- High performance connection pool(Mysql/Redis/RPC)，Automatic reconnection 
-- Database is highly compatible Laravel
-- Cache Redis highly compatible Laravel
-- Efficient task processing
-- Flexible exception handling
-- Powerful log system
-- Service registration & discovery
-- Service breaker
-- Service restrictions
-- Service fallback
-- Configuration Center
-- Apollo
-- Consul
 
 ## Document
 
-- [中文文档](https://www.swoft.org/docs/2.x/zh-CN/README.html)
-- [English](https://en.swoft.org/docs)
+[**Chinese Document**](https://doc.swoft.org)  
+[**English Document**](https://doc.swoft.org) Not yet, please help us to complete it.
 
-## Discuss
+QQ Group1: 548173319      
+QQ Group2: 778656850
 
-- [swoft-cloud/community](https://gitter.im/swoft-cloud/community)
-- QQ Group1: 548173319      
-- QQ Group2: 778656850
+## Environmental Requirements
 
-## Requirement
-
-- [PHP 7.1+](https://github.com/php/php-src/releases)
-- [Swoole 4.3.4+](https://github.com/swoole/swoole-src/releases)
-- [Composer](https://getcomposer.org/)
+1. PHP 7.0 +
+2. [Swoole 2.1.3](https://github.com/swoole/swoole-src/releases) + ( >= 4.1 is better), *coroutine* and *async redis client* options are required
+3. [Hiredis](https://github.com/redis/hiredis/releases)
+4. [Composer](https://getcomposer.org/)
 
 ## Install
 
-### Composer
+### Manual Installation
 
-```bash
-composer create-project swoft/swoft swoft
+* Clone project
+* Install requires `composer install`
+
+### Install by Composer
+
+* `composer create-project swoft/swoft swoft`
+
+### Install by Docker
+
+* `docker run -p 80:80 swoft/swoft`
+
+### Install by Docker-Compose
+
+* `cd swoft`
+* `docker-compose up`
+
+## Configuration
+
+If automatically copied `.env` file operation fails when `composer install` was executed, the `.env.example` that in root directory can be manually copied and named `.env`. Note that `composer update` will not trigger related copy operations.
+
+```
+# Server
+PFILE=/tmp/swoft.pid
+PNAME=php-swoft
+TCPABLE=true
+CRONABLE=false
+AUTO_RELOAD=true
+
+# HTTP
+HTTP_HOST=0.0.0.0
+HTTP_PORT=80
+
+# WebSocket
+WS_ENABLE_HTTP=true
+
+# TCP
+TCP_HOST=0.0.0.0
+TCP_PORT=8099
+TCP_PACKAGE_MAX_LENGTH=2048
+TCP_OPEN_EOF_CHECK=false
+
+# Crontab
+CRONTAB_TASK_COUNT=1024
+CRONTAB_TASK_QUEUE=2048
+
+# Settings
+WORKER_NUM=1
+MAX_REQUEST=10000
+DAEMONIZE=0
+DISPATCH_MODE=2
+LOG_FILE=@runtime/swoole.log
+TASK_WORKER_NUM=1
 ```
 
-## Start
+## Management
 
-- Http server
+### Help command
 
-```bash
-[root@swoft swoft]# php bin/swoft http:start
+```text
+[root@swoft]# php bin/swoft -h
+ ____                __ _
+/ ___|_      _____  / _| |_
+\___ \ \ /\ / / _ \| |_| __|
+ ___) \ V  V / (_) |  _| |_
+|____/ \_/\_/ \___/|_|  \__|
+
+Usage:
+  php bin/swoft {command} [arguments ...] [options ...]
+
+Commands:
+  entity  The group command list of database entity
+  gen     Generate some common application template classes
+  rpc     The group command list of rpc server
+  server  The group command list of http-server
+  ws      There some commands for manage the webSocket server
+
+Options:
+  -v, --version  show version
+  -h, --help     show help
 ```
 
-- WebSocket server
+### Start HTTP Server
 
 ```bash
-[root@swoft swoft]# php bin/swoft ws:start
+// Start HTTP Server
+php bin/swoft start
+
+// Start Daemonize HTTP Server
+php bin/swoft start -d
+
+// Restart HTTP server
+php bin/swoft restart
+
+// Reload HTTP server
+php bin/swoft reload
+
+// Stop HTTP server
+php bin/swoft stop
 ```
 
-- RPC server
+### Start WebSocket Server
+
+Start WebSocket Server, optional whether to support HTTP processing.
 
 ```bash
-[root@swoft swoft]# php bin/swoft rpc:start
+// Star WebSocket Server
+php bin/swoft ws:start
+
+// Start Daemonize WebSocket Server
+php bin/swoft ws:start -d
+
+// Restart WebSocket server
+php bin/swoft ws:restart
+
+// Reload WebSocket server
+php bin/swoft ws:reload
+
+// Stop WebSocket server
+php bin/swoft ws:stop
 ```
+
+### Start RPC Server
+
+Start an independent RPC Server.
+
+```bash
+// Start RPC Server
+php bin/swoft rpc:start
+
+// Start Daemonize RPC Server
+php bin/swoft rpc:start -d
+
+// Restart RPC Server
+php bin/swoft rpc:restart
+
+// Reload RPC Server
+php bin/swoft rpc:reload
+
+// Stop RPC Server
+php bin/swoft rpc:stop
+```
+
+## Changelog
+
+[Changelog](changelog.md)
 
 ## License
 
