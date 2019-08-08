@@ -41,7 +41,9 @@ return [
         /* @see HttpServer::$setting */
         'setting'  => [
             'task_worker_num'       => 12,
-            'task_enable_coroutine' => true
+            'task_enable_coroutine' => true,
+            'document_root' => '/Users/zhaoqi/Documents/fanliwork/swoft-1/public', // v4.4.0以下版本, 此处必须为绝对路径
+            'enable_static_handler' => true,
         ]
     ],
     'httpDispatcher'    => [
@@ -134,8 +136,8 @@ return [
     ],
     /** @see \Swoft\Tcp\Protocol */
     'tcpServerProtocol' => [
-        // 'type'            => \Swoft\Tcp\Packer\JsonPacker::TYPE,
-        'type' => \Swoft\Tcp\Packer\SimpleTokenPacker::TYPE,
+         'type'            => \Swoft\Tcp\Packer\JsonPacker::TYPE,
+//        'type' => \Swoft\Tcp\Packer\SimpleTokenPacker::TYPE,
         // 'openLengthCheck' => true,
     ],
     'cliRouter'         => [
