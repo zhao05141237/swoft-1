@@ -2,6 +2,7 @@
 namespace App\Http\Controller;
 
 use App\Exception\ApiException;
+use App\Exception\TestException;
 use RuntimeException;
 use Swoft\Http\Server\Annotation\Mapping\Controller;
 use Swoft\Http\Server\Annotation\Mapping\RequestMapping;
@@ -26,7 +27,16 @@ class ExceptionController
     }
 
     /**
-     * @RequestMapping("/ex")
+     * @RequestMapping(route="test")
+     * @throws TestException
+     */
+    public function test(): void
+    {
+        throw new TestException('test of ExceptionController');
+    }
+
+    /**
+     * @RequestMapping("ex")
      * @throws Throwable
      */
     public function ex(): void
