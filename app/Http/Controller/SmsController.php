@@ -23,6 +23,8 @@ class SmsController
     public function send(string $content)
     {
         $sms = BeanFactory::getBean(Sms::class);
+        \Swoft::trigger('test.event1');
+        \Swoft::trigger('test.event2');
         return $sms->send($content);
         
     }

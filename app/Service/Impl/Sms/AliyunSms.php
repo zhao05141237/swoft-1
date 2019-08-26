@@ -24,7 +24,7 @@ class AliyunSms implements SmsInterface
     public function send(string $content): bool
     {
         // TODO: Implement send() method.
-        CLog::info(__CLASS__.__FUNCTION__.$content);
+        CLog::info(__METHOD__.$content);
         return true;
     }
 
