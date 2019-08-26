@@ -16,8 +16,7 @@ use Swoft\Log\Helper\CLog;
  * @Aspect(order=1)
  *
  * @PointBean(
- *     include={"App\Http\Controller\TestExecTimeController"},
- *     include={"App\Http\Controller\CoController"},
+ *     include={"App\Http\Controller\TestExecTimeController","App\Http\Controller\CoController"}
  *     )
  */
 class CalcExecTimeAspect
