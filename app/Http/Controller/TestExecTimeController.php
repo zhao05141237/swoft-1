@@ -18,10 +18,10 @@ class TestExecTimeController
      * @param int $number
      * @return array
      */
-    public function factorial(int $number):array
+    public function factorial(int $number): array
     {
-        $factorial = function ($arg) use (&$factorial){
-            if($arg == 1){
+        $factorial = function ($arg) use (&$factorial) {
+            if ($arg == 1) {
                 return $arg;
             }
 
@@ -36,10 +36,10 @@ class TestExecTimeController
      * @return array
      * @RequestMapping()
      */
-    public function sumAndSleep():array
+    public function sumAndSleep(): array
     {
         $sum = 0;
-        for ($i = 1; $i <= 1000; $i++){
+        for ($i = 1; $i <= 1000; $i++) {
             $sum += $i;
         }
 

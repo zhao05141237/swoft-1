@@ -6,6 +6,7 @@ use App\Exception\ApiException;
 use Swoft\Error\Annotation\Mapping\ExceptionHandler;
 use Swoft\Http\Message\Response;
 use Swoft\Http\Server\Exception\Handler\AbstractHttpErrorHandler;
+use Swoft\Log\Helper\CLog;
 use Throwable;
 
 /**
@@ -31,6 +32,8 @@ class ApiExceptionHandler extends AbstractHttpErrorHandler
             'file'  => sprintf('At %s line %d', $except->getFile(), $except->getLine()),
             'trace' => $except->getTraceAsString(),
         ];
+
+        CLog::error($except->getMessage());
 
         return $response->withData($data);
     }
