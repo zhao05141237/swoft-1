@@ -32,13 +32,13 @@ class TimerController
      */
     public function after(): array
     {
-        $paramOne = 'aa';
-        $paramTwo = 'bb';
-        Timer::after(3 * 1000, function (int $timerId, $paramOne, $paramTwo) {
-            CLog::info('time_id' . $timerId);
-            CLog::info('param' . $paramOne);
-            CLog::info($paramTwo);
-            $this->addUser($timerId);
+        $paramOne = 1;
+        $paramTwo = 1;
+        Timer::after(3 * 1000, function ($timerId,$paramOne, $paramTwo) {
+            CLog::info('tiem_id:'.$timerId);
+            CLog::info('param_one:'.$paramOne);
+            CLog::info('param_two:'.$paramTwo);
+//            $this->addUser($paramOne);
         }, $paramOne, $paramTwo);
 
         return ['after'];
@@ -81,9 +81,14 @@ class TimerController
      */
     public function tick(): array
     {
-        Timer::tick(3 * 1000, function (int $timerId) {
-            $this->addUser($timerId);
-        });
+        $paramOne = 'aa';
+        $paramTwo = 'bbbbb';
+        Timer::tick(3 * 1000, function (int $timerId,$paramOne, $paramTwo) {
+            CLog::info('tiem_id:'.$timerId);
+            CLog::info('param_one:'.$paramOne);
+            CLog::info('param_two:'.$paramTwo);
+//            $this->addUser($timerId);
+        },$paramOne,$paramTwo);
 
         return ['tick'];
     }

@@ -128,6 +128,8 @@ return [
         /* @see WebSocketServer::$setting */
         'setting' => [
             'log_file' => alias('@runtime/swoole.log'),
+            'document_root' => '/Users/zhaoqi/Documents/fanliwork/swoft-1/public', // v4.4.0以下版本, 此处必须为绝对路径
+            'enable_static_handler' => true,
         ],
     ],
     'tcpServer'         => [

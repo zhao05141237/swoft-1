@@ -139,4 +139,16 @@ class TestController
     {
         return '(home.ar)Recv: ' . $data;
     }
+
+    /**
+     * Message command is 'test.all'
+     *
+     * @MessageMapping("all")
+     *
+     * @return void
+     */
+    public function all() : void
+    {
+        server()->sendToAll('test all');
+    }
 }
