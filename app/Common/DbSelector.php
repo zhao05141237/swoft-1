@@ -5,6 +5,7 @@ namespace App\Common;
 
 
 use Swoft\Bean\Annotation\Mapping\Bean;
+use Swoft\Console\ConsoleContext;
 use Swoft\Db\Connection\Connection;
 use Swoft\Db\Contract\DbSelectorInterface;
 
@@ -19,18 +20,23 @@ class DbSelector implements DbSelectorInterface
 {
     /**
      * @param Connection $connection
+     * @throws \Swoft\Exception\SwoftException
+     * @throws \Throwable
      */
     public function select(Connection $connection): void
     {
-        $selectIndex  = (int)context()->getRequest()->query('id', 0);
+        $context = context();
+
+        if ($context instanceof ConsoleContext) {
+            $selectIndex = $context->getInput()->get('index', 0);
+        } else {
+            $selectIndex = $context->getRequest()->query('index', 0);
+        }
+
         $createDbName = $connection->getDb();
 
         if ($selectIndex == 0) {
             $selectIndex = '';
-        }
-
-        if($createDbName == 'test2'){
-            $createDbName = 'test';
         }
 
         $dbName = sprintf('%s%s', $createDbName, (string)$selectIndex);

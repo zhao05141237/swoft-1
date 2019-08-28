@@ -49,6 +49,7 @@ return [
     'httpDispatcher'    => [
         // Add global http middleware
         'middlewares'      => [
+            \Swoft\Whoops\WhoopsMiddleware::class,
             \App\Http\Middleware\FavIconMiddleware::class,
             // \Swoft\Whoops\WhoopsMiddleware::class,
             // Allow use @View tag
@@ -66,9 +67,9 @@ return [
     ],
     'db2'               => [
         'class'      => Database::class,
-        'dsn'        => 'mysql:dbname=test2;host=127.0.0.1',
-        'username'   => 'root',
-        'password'   => 'swoft123456',
+        'dsn'      => 'mysql:dbname=tuniu;host=127.0.0.1',
+        'username' => 'root',
+        'password' => 'GWx=qe-5*(2S',
         'dbSelector' => bean(DbSelector::class)
     ],
     'db2.pool'          => [
@@ -77,9 +78,9 @@ return [
     ],
     'db3'               => [
         'class'    => Database::class,
-        'dsn'      => 'mysql:dbname=test2;host=127.0.0.1',
+        'dsn'      => 'mysql:dbname=tuniu;host=127.0.0.1',
         'username' => 'root',
-        'password' => 'swoft123456'
+        'password' => 'GWx=qe-5*(2S',
     ],
     'db3.pool'          => [
         'class'    => Pool::class,

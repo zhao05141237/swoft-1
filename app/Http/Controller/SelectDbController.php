@@ -6,6 +6,7 @@ namespace App\Http\Controller;
 use App\Model\Entity\Count2;
 use App\Model\Entity\Desc;
 use App\Model\Entity\User;
+use App\Model\Entity\User4;
 use Exception;
 use ReflectionException;
 use Swoft\Bean\Exception\ContainerException;
@@ -24,6 +25,19 @@ use Throwable;
  */
 class SelectDbController
 {
+    /**
+     * @return array
+     * @throws DbException
+     * @throws Throwable
+     * @RequestMapping()
+     */
+    public function selectUser()
+    {
+        $id = $this->getId();
+
+        return User4::find($id)->toArray();
+    }
+
     /**
      * @RequestMapping()
      *
@@ -249,7 +263,7 @@ class SelectDbController
      */
     public function getId(): int
     {
-        $user = new User();
+        $user = new User4();
         $user->setAge(mt_rand(1, 100));
         $user->setUserDesc('desc');
 

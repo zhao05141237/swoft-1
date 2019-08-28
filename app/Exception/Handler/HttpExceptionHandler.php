@@ -12,6 +12,7 @@ use Swoft\Http\Message\Response;
 use Swoft\Http\Server\Exception\Handler\AbstractHttpErrorHandler;
 use Swoft\Log\Helper\CLog;
 use Swoft\Log\Helper\Log;
+use Swoft\Whoops\WhoopsHandler;
 use Throwable;
 
 /**
@@ -23,14 +24,15 @@ class HttpExceptionHandler extends AbstractHttpErrorHandler
 {
     /**
      * @param Throwable $e
-     * @param Response   $response
-     *
+     * @param Response $response
      * @return Response
-     * @throws ReflectionException
      * @throws ContainerException
+     * @throws ReflectionException
+     * @throws \Swoft\Exception\SwoftException
      */
     public function handle(Throwable $e, Response $response): Response
     {
+        $request = context()->getRequest();
         // Log
         Log::error($e->getMessage());
         CLog::error($e->getMessage());
@@ -42,14 +44,19 @@ class HttpExceptionHandler extends AbstractHttpErrorHandler
             );
         }
 
-        $data = [
-            'code'  => $e->getCode(),
-            'error' => sprintf('(%s) %s', get_class($e), $e->getMessage()),
-            'file'  => sprintf('At %s line %d', $e->getFile(), $e->getLine()),
-            'trace' => $e->getTraceAsString(),
-        ];
+//        $data = [
+//            'code'  => $e->getCode(),
+//            'error' => sprintf('(%s) %s', get_class($e), $e->getMessage()),
+//            'file'  => sprintf('At %s line %d', $e->getFile(), $e->getLine()),
+//            'trace' => $e->getTraceAsString(),
+//        ];
 
         // Debug is true
-        return $response->withData($data);
+        $whoops  = bean(WhoopsHandler::class);
+        $content = $whoops->run($e, $request);
+        return $response->withContent($content);
+
+        // Debug is true
+//        return $response->withData($data);
     }
 }
