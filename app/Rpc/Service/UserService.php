@@ -19,10 +19,9 @@ use Swoft\Rpc\Server\Annotation\Mapping\Service;
 class UserService implements UserInterface
 {
     /**
-     * @param int   $id
+     * @param int $id
      * @param mixed $type
-     * @param int   $count
-     *
+     * @param int $count
      * @return array
      */
     public function getList(int $id, $type, int $count = 10): array

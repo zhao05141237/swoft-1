@@ -49,7 +49,7 @@ return [
     'httpDispatcher'    => [
         // Add global http middleware
         'middlewares'      => [
-            \Swoft\Whoops\WhoopsMiddleware::class,
+//            \Swoft\Whoops\WhoopsMiddleware::class,
             \App\Http\Middleware\FavIconMiddleware::class,
             // \Swoft\Whoops\WhoopsMiddleware::class,
             // Allow use @View tag
@@ -76,15 +76,16 @@ return [
         'class'    => Pool::class,
         'database' => bean('db2')
     ],
-    'db3'               => [
+    'fanli'               => [
         'class'    => Database::class,
-        'dsn'      => 'mysql:dbname=tuniu;host=127.0.0.1',
+        'dsn'      => 'mysql:dbname=fanli;host=127.0.0.1',
         'username' => 'root',
         'password' => 'GWx=qe-5*(2S',
+        'charset'   => 'utf8',
     ],
-    'db3.pool'          => [
+    'fanli.pool'          => [
         'class'    => Pool::class,
-        'database' => bean('db3')
+        'database' => bean('fanli')
     ],
     'migrationManager'  => [
         'migrationPath' => '@app/Migration',

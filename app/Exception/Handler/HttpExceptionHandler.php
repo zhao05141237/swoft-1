@@ -44,19 +44,19 @@ class HttpExceptionHandler extends AbstractHttpErrorHandler
             );
         }
 
-//        $data = [
-//            'code'  => $e->getCode(),
-//            'error' => sprintf('(%s) %s', get_class($e), $e->getMessage()),
-//            'file'  => sprintf('At %s line %d', $e->getFile(), $e->getLine()),
-//            'trace' => $e->getTraceAsString(),
-//        ];
+        $data = [
+            'code'  => $e->getCode(),
+            'error' => sprintf('(%s) %s', get_class($e), $e->getMessage()),
+            'file'  => sprintf('At %s line %d', $e->getFile(), $e->getLine()),
+            'trace' => $e->getTraceAsString(),
+        ];
 
         // Debug is true
-        $whoops  = bean(WhoopsHandler::class);
-        $content = $whoops->run($e, $request);
-        return $response->withContent($content);
+//        $whoops  = bean(WhoopsHandler::class);
+//        $content = $whoops->run($e, $request);
+//        return $response->withContent($content);
 
         // Debug is true
-//        return $response->withData($data);
+        return $response->withData($data);
     }
 }
